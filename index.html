@@ -6,103 +6,105 @@
     <title>ADMS | Android Device Management Suite</title>
     <style>
         :root {
-            --bg: #0d0f14;
-            --surface: #161920;
+            --bg: #050505;
             --accent: #deff9a;
-            --text: #e1e1e6;
-            --text-dim: #94949b;
+            --accent-glow: rgba(222, 255, 154, 0.3);
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
             margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: white;
+            overflow-x: hidden;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
             min-height: 100vh;
-            line-height: 1.6;
         }
 
-        .container { max-width: 700px; width: 90%; padding: 60px 20px; }
+        /* Fondo Animado de Gradientes */
+        .bg-anim {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 50% 50%, #1a1f12 0%, #050505 80%);
+            animation: pulse 10s infinite alternate;
+        }
 
-        .brand { margin-bottom: 2rem; }
-        .brand h1 { 
-            font-size: 3.5rem; 
-            margin: 0; 
-            letter-spacing: -2px; 
+        @keyframes pulse {
+            from { opacity: 0.8; }
+            to { opacity: 1; }
+        }
+
+        .container {
+            max-width: 700px;
+            text-align: center;
+            padding: 20px;
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        h1 {
+            font-size: 5rem;
+            margin: 0;
             color: var(--accent);
-            text-transform: uppercase;
-        }
-        .brand p { font-size: 1.2rem; color: var(--text-dim); margin-top: 0; }
-
-        .card { 
-            background: var(--surface);
-            border: 1px solid #2a2d35;
-            border-radius: 16px;
-            padding: 2rem;
-            margin: 2rem 0;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            text-shadow: 0 0 30px var(--accent-glow);
+            letter-spacing: -3px;
         }
 
-        h2 { font-size: 1.1rem; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; margin-top: 0; }
+        .tagline { color: #888; margin-bottom: 30px; font-weight: 300; letter-spacing: 2px; }
 
-        pre { 
-            background: #000; 
-            padding: 1.5rem; 
-            border-radius: 8px; 
-            overflow-x: auto; 
-            color: #d1d1d1;
-            font-family: 'Cascadia Code', 'Courier New', monospace;
-            border-left: 4px solid var(--accent);
-        }
-
-        .btn-container { display: flex; gap: 15px; flex-wrap: wrap; }
-
-        .btn {
-            padding: 14px 28px;
-            border-radius: 8px;
-            font-weight: 600;
+        .btn-download {
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            padding: 15px 40px;
+            border-radius: 50px;
             text-decoration: none;
-            transition: all 0.3s ease;
+            font-weight: bold;
+            transition: 0.4s;
+            display: inline-block;
+            cursor: pointer;
         }
 
-        .btn-primary { background: var(--accent); color: #000; }
-        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 5px 20px rgba(222, 255, 154, 0.2); }
+        .btn-download:hover {
+            background: var(--accent);
+            color: #000;
+            box-shadow: 0 0 30px var(--accent-glow);
+            transform: scale(1.05);
+        }
 
-        .btn-secondary { border: 1px solid #333; color: var(--text); }
-        .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
-
-        footer { margin-top: 4rem; color: var(--text-dim); font-size: 0.9rem; }
+        .code-box {
+            background: #111;
+            border: 1px solid #333;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: left;
+            margin: 40px auto;
+            max-width: 500px;
+            color: #ccc;
+            font-family: monospace;
+        }
     </style>
 </head>
 <body>
 
+    <div class="bg-anim"></div>
+
     <div class="container">
-        <div class="brand">
-            <h1>ADMS</h1>
-            <p>High-performance Android management, native to the core.</p>
+        <h1>ADMS</h1>
+        <p class="tagline">ANDROID DEVICE MANAGEMENT SUITE</p>
+        
+        <div class="code-box">
+            $ sudo ./setup.sh --install-full
         </div>
 
-        <div class="card">
-            <h2>Quick Install</h2>
-            <p>Get started with the latest stable version (Linux x86_64):</p>
-            <pre><code>wget https://github.com/thiago-202611/ADMS/releases/download/v1.0.0/ADMS_v1.0.tar.gz
-tar -xzvf ADMS_v1.0.tar.gz
-cd ADMS_v1.0
-sudo ./setup.sh</code></pre>
-        </div>
-
-        <div class="btn-container">
-            <a href="https://github.com/thiago-202611/ADMS/releases/download/v1.0.0/ADMS_v1.0.tar.gz" class="btn btn-primary">Download V1.0.0</a>
-            <a href="https://github.com/thiago-202611/ADMS" class="btn btn-secondary">View Source Code</a>
-        </div>
-
-        <footer>
-            Built with passion on Arch/CachyOS. Open Source.
-        </footer>
+        <a href="https://github.com/thiago-202611/ADMS/releases/download/v1.0.0/ADMS_v1.0.tar.gz" class="btn-download">
+            DOWNLOAD V1.0.0
+        </a>
     </div>
 
 </body>
