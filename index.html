@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADMS - Android Device Management Suite</title>
+    <style>
+        :root {
+            --bg-color: #121212;
+            --card-bg: #1a1a1a;
+            --accent-color: #deff9a;
+            --text-color: #ffffff;
+            --text-muted: #aaaaaa;
+            --border-color: #2d2d2d;
+        }
+        body { font-family: sans-serif; background-color: var(--bg-color); color: var(--text-color); margin: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; }
+        .container { max-width: 650px; width: 90%; text-align: center; padding: 40px 20px; }
+        .logo { font-size: 4rem; font-weight: bold; color: var(--accent-color); letter-spacing: 4px; margin-bottom: 10px; }
+        .card { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 25px; margin: 35px 0; text-align: left; }
+        .terminal-block { font-family: monospace; background-color: #000; padding: 15px; border-radius: 6px; color: #fff; margin-top: 10px; overflow-x: auto; }
+        .btn-download { display: inline-block; background-color: var(--accent-color); color: #121212; text-decoration: none; padding: 14px 30px; font-weight: bold; border-radius: 8px; transition: 0.2s; }
+        .btn-download:hover { transform: translateY(-2px); box-shadow: 0 0 20px rgba(222, 255, 154, 0.3); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">ADMS</div>
+        <h1>Android Device Management Suite</h1>
+        <p>Gestor asíncrono de alto rendimiento para dispositivos Android.</p>
+
+        <div class="card">
+            <h2>Instalación Rápida</h2>
+            Descargá y ejecutá el script de configuración:
+            <div class="terminal-block">
+wget https://github.com/thiago-202611/ADMS/releases/download/v1.0.0/ADMS_v1.0.tar.gz
+tar -xzvf ADMS_v1.0.tar.gz
+cd ADMS_v1.0
+sudo ./setup.sh
+            </div>
+        </div>
+
+        <a href="https://github.com/thiago-202611/ADMS/releases/download/v1.0.0/ADMS_v1.0.tar.gz" class="btn-download">
+            📦 Descargar V1.0.0 Stable (.tar.gz)
+        </a>
+    </div>
+</body>
+</html>
